@@ -8,6 +8,7 @@ conn = sqlite3.connect("customer.db")
 c = conn.cursor()
 
 # Create a table
+# ---
 # c.execute('''
 #     CREATE TABLE customers (
 #         first_name text,
@@ -26,10 +27,10 @@ c = conn.cursor()
 
 # Insert many values at once into a table
 # ---
-many_customers = [('Wes', 'Brown', "wes@brown.com"),
-                  ('Steph', 'Kuewa', "steph@kuewa.com"),
-                  ('Dan', 'Pas', "dan@pas.com"),
-                  ]
+# many_customers = [('Wes', 'Brown', "wes@brown.com"),
+#                   ('Steph', 'Kuewa', "steph@kuewa.com"),
+#                   ('Dan', 'Pas', "dan@pas.com"),
+#                   ]
 
 # c.executemany("INSERT INTO customers VALUES (?, ?, ?)", many_customers)
 # print(
@@ -110,11 +111,35 @@ many_customers = [('Wes', 'Brown', "wes@brown.com"),
 # ---
 # ASC = ascending
 # DESC = decending
-c.execute("SELECT rowid, * FROM customers ORDER BY last_name DESC")
+# c.execute("SELECT rowid, * FROM customers ORDER BY last_name DESC")
 
-items = c.fetchall()
-for i in items:
-    print(i)
+# items = c.fetchall()
+# for i in items:
+#     print(i)
+
+
+# AND / OR (extend the functionallity of the where clause)
+# ---
+# c.execute("SELECT rowid, * FROM customers WHERE last_name LIKE 'Br%' AND rowid = 3")
+
+# items = c.fetchall()
+# for i in items:
+#     print(i)
+
+# Limit results
+# ---
+# c.execute("SELECT rowid, * FROM customers LIMIT 2")
+
+# items = c.fetchall()
+# for i in items:
+#     print(i)
+
+# Drop / delete a table
+# c.execute("DROP TABLE customers")
+# conn.commit()
+# items = c.fetchall()
+# for i in items:
+#     print(i)
 
 
 # Commit to database
